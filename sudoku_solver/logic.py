@@ -1,6 +1,6 @@
 # sudoku_solver/logic.py
 
-from board import Board
+from sudoku_solver.board import Board
 
 def determine_region(r_idx, c_idx):
   return (r_idx // 3) * 3 + (c_idx // 3)
@@ -9,10 +9,6 @@ def determine_region(r_idx, c_idx):
 def solve_sudoku(board:Board):
   # return True to indicate a solution exists
   print('in solve_sudoku')
-  for x, r in enumerate(board.rows()):
-     for y, c in enumerate(r):
-       print(f"[{x},{y},{determine_region(x,y)}] ", end='')
-     print()
   return True
 
 

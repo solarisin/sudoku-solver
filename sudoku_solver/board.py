@@ -13,10 +13,14 @@ class Board:
         board_str += "- - - + - - - + - - -\n"
       for j in range(9):
         if j % 3 == 0 and j != 0:
-          board_str += " | "
-        board_str += self.board[i][j] if self.board[i][j] != 0 else "."
+          board_str += "| "
+        board_str += str(self.board[i][j]) if self.board[i][j] != 0 else "."
+        board_str += " "
       board_str += "\n"
     return board_str
+
+  def __eq__(self, other):
+    return np.array_equal(self.board, other.board)
 
   
   def rows(self):
