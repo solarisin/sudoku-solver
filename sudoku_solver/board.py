@@ -24,19 +24,19 @@ class Board:
 
   
   def rows(self):
-    '''Returns a list of rows'''
+    '''Returns a list of row values'''
     return self.board.tolist()
 
   
   def cols(self):
-    '''Retruns a list of columns'''
+    '''Retruns a list of column values'''
     return self.board.T.tolist()
 
   
   def regions(self):
-    '''Returns a list of 3x3 sub-boards'''
-    regions = []
+    '''Returns a list of 3x3 sub-board values'''
+    regions = np.empty((0,3), int)
     for i in range(0, 9, 3):
       for j in range(0, 9, 3):
-        regions.append(self.board[i:i+3, j:j+3].tolist())
-    return regions
+        np.append(regions, self.board[i:i+3, j:j+3], axis=0)
+    return regions.flatten()
