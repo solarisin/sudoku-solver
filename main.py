@@ -17,10 +17,13 @@ def main():
             print(board)
         else:
             print("\nNo solution exists.")
+
+        print("Is solved?", logic.is_solved(board))
+        
         if board == solution:
-            print("\nSolved!")
+            print("\nVerified Solved!")
         else:
-            print("\nNot Solved.")
+            print("\nVerified Not Solved.")
         print('\n'+'-'*20+'\n')
 
 
