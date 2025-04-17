@@ -49,3 +49,18 @@ def find_empty(board:Board):
        if c == 0:
          return x, y
   return None,None
+
+def brute_force_solve(board: Board) -> bool:
+    empty_cell = find_empty(board)
+    if not empty_cell:
+        return True
+
+    row, col = empty_cell
+    for num in range(1, 10):
+        if is_valid(board, row, col, num):
+            board.update_cell(row, col, num)
+            if brute_force_solve(board):
+                return True
+            board.update_cell(row, col, 0)
+
+    return False
