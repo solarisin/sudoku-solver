@@ -64,3 +64,9 @@ def brute_force_solve(board: Board) -> bool:
             board.update_cell(row, col, 0)
 
     return False
+
+def store_board_state(board: Board):
+    return board.board.copy()
+
+def restore_board_state(board: Board, state):
+    board.board = state.copy()
