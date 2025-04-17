@@ -25,7 +25,7 @@ This will launch the graphical user interface where you can interact with the Su
 Here is an example of how to use the command-line interface to solve a Sudoku puzzle:
 
 ```sh
-poetry run python src/main.py --board "5,3,0,0,7,0,0,0,0;6,0,0,1,9,5,0,0,0;0,9,8,0,0,0,0,6,0;8,0,0,0,6,0,0,0,3;4,0,0,8,0,3,0,0,1;7,0,0,0,2,0,0,0,6;0,6,0,0,0,0,2,8,0;0,0,0,4,1,9,0,0,5;0,0,0,0,8,0,0,7,9"
+poetry run python src/main.py --board "530070000600195000098000060800060003400803001700020006060000280000419005000080079"
 ```
 
 This command will solve the provided Sudoku puzzle and display the solution in the terminal.
