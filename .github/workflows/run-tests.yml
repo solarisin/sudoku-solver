@@ -22,7 +22,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: poetry install
+        run: |
+          poetry install
+          poetry add pytest
+          poetry add pytest-pygame
 
       - name: Run tests
         run: poetry run pytest --junitxml=test-reports/test-results.xml
