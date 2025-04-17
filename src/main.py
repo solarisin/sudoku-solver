@@ -3,6 +3,7 @@
 import click
 from sudoku_solver import logic, utils
 from sudoku_solver.board import Board
+from sudoku_solver.tui import display_board, interact_with_user
 
 def validate_board(ctx, param, value):
     if value:
@@ -28,10 +29,10 @@ def main(board):
         board = Board(board_rows)
         solution = Board(solution_rows)
         print("Initial Sudoku Board:")
-        print(board)
+        display_board(board)
         if logic.solve_sudoku(board):
             print("\nSolved Sudoku Board:")
-            print(board)
+            display_board(board)
         else:
             print("\nNo solution exists.")
 
