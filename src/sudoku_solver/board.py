@@ -33,6 +33,7 @@ class House:
 class Board:
   def __init__(self, board:board_t):
     self.board = board
+    self.selected_cell = (0, 0)  # P31fe
 
   def __str__(self):
     board_str = str()
@@ -80,3 +81,9 @@ class Board:
         freg = self.board[i:i+3, j:j+3].flatten()
         regs= np.append(regs, [freg], axis=0)
     return regs
+
+  def update_cell(self, row: DimIdx, col: DimIdx, value: int):  # P6790
+    self.board[row][col] = value
+
+  def get_cell_value(self, row: DimIdx, col: DimIdx) -> int:  # Pd6fe
+    return self.board[row][col]
