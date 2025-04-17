@@ -1,11 +1,12 @@
-import unittest
+import pytest
 import pygame
 from sudoku_solver.board import Board
 from sudoku_solver.ui import SudokuGUI
 
-class TestSudokuGUI(unittest.TestCase):
+class TestSudokuGUI:
 
-    def setUp(self):
+    @pytest.fixture(autouse=True)
+    def setup_method(self):
         self.board = Board([
             [5, 3, 0, 0, 7, 0, 0, 0, 0],
             [6, 0, 0, 1, 9, 5, 0, 0, 0],
@@ -21,22 +22,19 @@ class TestSudokuGUI(unittest.TestCase):
 
     def test_unsolved_board_shown(self):
         self.gui.draw_board()
-        self.assertEqual(self.gui.board, self.board)
+        assert self.gui.board == self.board
 
     def test_user_can_interact_with_board(self):
         self.gui.selected_cell = (0, 2)
         self.gui.handle_key_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
-        self.assertEqual(self.gui.board.board[0][2], 4)
+        assert self.gui.board.board[0][2] == 4
 
     def test_user_can_solve_board(self):
         self.gui.solve_and_update()
-        self.assertTrue(self.gui.board.is_solved())
+        assert self.gui.board.is_solved()
 
     def test_user_can_undo_actions(self):
         self.gui.selected_cell = (0, 2)
         self.gui.handle_key_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
         self.gui.undo()
-        self.assertEqual(self.gui.board.board[0][2], 0)
-
-if __name__ == '__main__':
-    unittest.main()
+        assert self.gui.board.board[0][2] == 0

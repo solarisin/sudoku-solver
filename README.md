@@ -29,3 +29,11 @@ poetry run python src/main.py --board "53007000060019500009800006080006000340080
 ```
 
 This command will solve the provided Sudoku puzzle and display the solution in the terminal.
+
+## Running UI Tests
+
+To run the UI tests using `pytest` and `pytest-pygame`, use the following command:
+
+```sh
+poetry run pytest tests/test_ui.py
+```
