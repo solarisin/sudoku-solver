@@ -47,3 +47,23 @@ class TestSudokuGUI:
         self.gui.handle_key_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
         self.gui.handle_mouse_event(pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(150, 570)))
         assert self.gui.board.board[0][2] == 0
+
+    def test_run(self):
+        self.gui.run()
+        assert not pygame.get_init()
+
+    def test_save_state(self):
+        initial_state = self.gui.board.get_board_state()
+        self.gui.board.update_cell(0, 0, 1)
+        self.gui.save_state()
+        self.gui.board.update_cell(0, 0, 2)
+        self.gui.undo()
+        assert (self.gui.board.get_board_state() == initial_state).all()
+
+    def test_undo(self):
+        initial_state = self.gui.board.get_board_state()
+        self.gui.board.update_cell(0, 0, 1)
+        self.gui.save_state()
+        self.gui.board.update_cell(0, 0, 2)
+        self.gui.undo()
+        assert (self.gui.board.get_board_state() == initial_state).all()

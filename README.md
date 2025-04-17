@@ -43,3 +43,13 @@ To run all tests, including the new tests for the "Solve" and "Undo" buttons, us
 ```sh
 poetry run pytest
 ```
+
+## Running Tests
+
+To run the tests, use the following command:
+
+```sh
+poetry run pytest
+```
+
+We use `pytest` for testing.

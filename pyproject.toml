@@ -13,6 +13,14 @@ click = "^8.0.0"
 pytest = "^6.2.4"
 pytest-pygame = "^0.1.0"
 
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "src"
+]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
