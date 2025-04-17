@@ -24,3 +24,6 @@ testpaths = [
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+main = "src.main:main"

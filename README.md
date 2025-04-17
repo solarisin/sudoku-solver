@@ -10,6 +10,13 @@ To install the project dependencies, you can use [Poetry](https://python-poetry.
 poetry install
 ```
 
+To install `pytest` and `pytest-pygame`, run the following commands:
+
+```sh
+poetry add pytest
+poetry add pytest-pygame
+```
+
 ## Usage
 
 To run the Sudoku solver, use the following command:
