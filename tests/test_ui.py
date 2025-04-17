@@ -38,3 +38,12 @@ class TestSudokuGUI:
         self.gui.handle_key_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
         self.gui.undo()
         assert self.gui.board.board[0][2] == 0
+
+    def test_solve_button_click(self):
+        self.gui.handle_mouse_event(pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(50, 570)))
+        assert self.gui.board.is_solved()
+
+    def test_undo_button_click(self):
+        self.gui.handle_key_event(pygame.event.Event(pygame.KEYDOWN, key=pygame.K_4))
+        self.gui.handle_mouse_event(pygame.event.Event(pygame.MOUSEBUTTONDOWN, button=1, pos=(150, 570)))
+        assert self.gui.board.board[0][2] == 0

@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 from sudoku_solver.board import Board
-from sudoku_solver.logic import solve_sudoku, is_solved, is_valid, find_empty, brute_force_solve
+from sudoku_solver.logic import solve_sudoku, is_solved, is_valid, find_empty, brute_force_solve, store_board_state, restore_board_state
 
 class TestSudokuSolver(unittest.TestCase):
 
@@ -69,6 +69,16 @@ class TestSudokuSolver(unittest.TestCase):
             [3, 4, 5, 2, 8, 6, 1, 7, 9]
         ]))
         self.assertEqual(self.board, solved_board)
+
+    def test_store_board_state(self):
+        state = store_board_state(self.board)
+        self.assertTrue(np.array_equal(state, self.board.board))
+
+    def test_restore_board_state(self):
+        state = store_board_state(self.board)
+        self.board.board[0][0] = 0
+        restore_board_state(self.board, state)
+        self.assertTrue(np.array_equal(self.board.board, state))
 
 if __name__ == '__main__':
     unittest.main()

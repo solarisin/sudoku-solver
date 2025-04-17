@@ -37,3 +37,9 @@ To run the UI tests using `pytest` and `pytest-pygame`, use the following comman
 ```sh
 poetry run pytest tests/test_ui.py
 ```
+
+To run all tests, including the new tests for the "Solve" and "Undo" buttons, use the following command:
+
+```sh
+poetry run pytest
+```
