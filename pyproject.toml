@@ -10,6 +10,16 @@ python = ">=3.11"
 beartype = "^0.20.2"
 numpy = "^2.2.4"
 click = "^8.0.0"
+pytest = "^6.2.4"
+pytest-pygame = "^0.1.0"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+    "src"
+]
 
 [build-system]
 requires = ["poetry-core"]
