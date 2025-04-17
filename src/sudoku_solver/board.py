@@ -87,3 +87,9 @@ class Board:
 
   def get_cell_value(self, row: DimIdx, col: DimIdx) -> int:  # Pd6fe
     return self.board[row][col]
+
+  def get_board_state(self):  # P113a
+    return self.board.copy()
+
+  def set_board_state(self, state):  # Pe2aa
+    self.board = state.copy()
