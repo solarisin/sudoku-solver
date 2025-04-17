@@ -3,7 +3,8 @@
 import click
 from sudoku_solver import logic, utils
 from sudoku_solver.board import Board
-from sudoku_solver.tui import display_board, interact_with_user
+from sudoku_solver.tui_display import tui_display_board, interact_with_user as tui_interact_with_user
+from sudoku_solver.ui import SudokuGUI
 
 def validate_board(ctx, param, value):
     if value:
@@ -18,7 +19,8 @@ def validate_board(ctx, param, value):
 
 @click.command()
 @click.option('--board', default=None, callback=validate_board, help='Sudoku board to solve')
-def main(board):
+@click.option('--tui', is_flag=True, help='Use text-based user interface')
+def main(board, tui):
     if board:
         predefined_boards = [board.board]
     else:
@@ -28,21 +30,23 @@ def main(board):
     for board_rows, solution_rows in zip(predefined_boards, predefined_solutions):
         board = Board(board_rows)
         solution = Board(solution_rows)
-        print("Initial Sudoku Board:")
-        display_board(board)
-        if logic.solve_sudoku(board):
-            print("\nSolved Sudoku Board:")
-            display_board(board)
+        if tui:
+            print("Initial Sudoku Board:")
+            tui_display_board(board)
+            if logic.solve_sudoku(board):
+                print("\nSolved Sudoku Board:")
+                tui_display_board(board)
+            else:
+                print("\nNo solution exists.")
+            print("Is solved?", logic.is_solved(board))
+            if board == solution:
+                print("\nVerified Solved!")
+            else:
+                print("\nVerified Not Solved.")
+            print('\n'+'-'*20+'\n')
         else:
-            print("\nNo solution exists.")
-
-        print("Is solved?", logic.is_solved(board))
-        
-        if board == solution:
-            print("\nVerified Solved!")
-        else:
-            print("\nVerified Not Solved.")
-        print('\n'+'-'*20+'\n')
+            gui = SudokuGUI(board)
+            gui.run()
 
 if __name__ == "__main__":
     main()
